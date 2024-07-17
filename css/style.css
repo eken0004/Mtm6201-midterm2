@@ -1,0 +1,305 @@
+/* MY STYLES */
+:root {
+  --primary-font: "Lato", sans-serif;
+  --secondary-font: "Playfair Display", sans-serif;
+  --primary-accent-color: #0a6ba9;
+  --secondary-accent-color: purple;
+  --red: red;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: var(--primary-font);
+}
+
+header,
+main,
+footer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 0px 30px;
+}
+
+aside#skip a {
+  position: absolute;
+  top: -40px;
+  left: calc(50% - 54px);
+  background: white;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 0px 0px 12px 12px;
+  z-index: 100;
+}
+
+aside#skip a:focus {
+  top: 0;
+}
+
+*:focus {
+  outline: 2px solid var(--red);
+}
+
+nav > ul {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+nav > ul li {
+  display: flex;
+}
+
+nav > ul li a {
+  font-weight: bold;
+  padding: 4px 16px;
+  border-radius: 12px;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out; /* smooths out the transition */
+}
+
+a.button {
+  text-decoration: none;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+a.button:link {
+  background: var(--secondary-accent-color);
+}
+
+a.button:visited {
+  background: var(--primary-accent-color);
+}
+
+a:hover,
+a.button:hover {
+  transform: scale(1.15);
+  background-color: #34aac8;
+  color: #000;
+}
+/* H1 Stripe */
+.highlight {
+  position: relative; /* Anchors the positioning of the ::after element */
+}
+.highlight::after {
+  position: absolute; /* Allows us to manipulate the position of the ::after element */
+  content: ""; /* Without this property the ::after element will not exist!! */
+  width: calc(100% + 6px); /* Sets the width to be the same size as the span */
+  height: 10px;
+  right: -3px;
+  bottom: calc(50% - 7px);
+  z-index: -1; /* Puts the stripe behind the text */
+
+  background: var(--primary-accent-color);
+}
+
+section#hero-section {
+  margin-bottom: 50px;
+}
+
+section#hero-section > div {
+  position: relative;
+  overflow: hidden;
+
+  -webkit-box-shadow: 0px 0px 16px 9px rgba(84, 87, 64, 0.41);
+  -moz-box-shadow: 0px 0px 16px 9px rgba(84, 87, 64, 0.41);
+  box-shadow: 0px 0px 16px 9px rgba(84, 87, 64, 0.41);
+}
+
+/* Hero image  */
+section#hero-section .wrapper {
+  /* Clips the image if it goes outside the bounds of .wrapper. */
+  position: absolute;
+  /* Allows us to place the text over the image */
+
+  bottom: 50px;
+  left: 0px;
+  right: 0;
+  z-index: 5; /* Puts the text over the image  */
+}
+
+section#hero-section img {
+  width: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  animation: zoom 20s infinite;
+}
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  } /* Makes the image larger; will be cropped by overflow: hidden on .wrapper */
+}
+
+section#hero-section .wrapper .text {
+  margin-bottom: 12px;
+}
+section#hero-section .wrapper * {
+  text-align: center;
+}
+
+section#hero-section .wrapper p {
+  font-weight: bold;
+}
+
+section#hero-section .wrapper h2 {
+  /* font-size: 1.75em; */
+}
+
+section#hero-section .wrapper .colorShift {
+  display: block;
+}
+
+/* Colour Shifting text */
+.colorShift {
+  font-weight: bold;
+  background: -webkit-linear-gradient(
+    0deg,
+    var(--primary-accent-color),
+    #2aaac2
+  ); /* Applies the gradiant to the background */
+  background-size: 200% 100%; /* sets the gradient to be twice as wide as the element - half will be off-screen so to speak */
+  background-position: 0% 0%; /* Specifies the starting position of the background */
+  -webkit-text-fill-color: transparent; /* Makes the text transparent */
+  -webkit-background-clip: text; /* Uses the text as a mask for the background - it cuts off any background that's not behind the text */
+
+  animation: shift 5s; /* Applies the animation */
+}
+
+@keyframes shift {
+  from {
+    background-position: 0% 0%;
+  } /* Starting position for background */
+  to {
+    background-position: 100% 0%;
+  } /* ending position: background will scroll from one side to the other. */
+}
+
+section#planet-section {
+  margin-bottom: 50px;
+  padding: 0px 20px;
+}
+
+section#planet-section h3 {
+  padding: 0px 0px 16px;
+  text-align: center;
+}
+
+section#planet-section .planets {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px;
+  padding: 0px 20px;
+}
+
+section#planet-section .planet {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer {
+  padding: 16px 0px;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-top: 1px solid #222222;
+}
+
+header h1 {
+  font-size: 2em;
+  font-family: var(--secondary-font);
+}
+
+@media screen and (min-width: 900px) {
+  section#hero-section .wrapper .text {
+    margin-bottom: 12px;
+  }
+  section#hero-section .wrapper * {
+    text-align: left;
+  }
+
+  section#hero-section .wrapper {
+    left: 50px;
+  }
+  section#planet-section h3 {
+    text-align: left;
+  }
+  section#hero-section .wrapper .colorShift {
+    display: inline;
+  }
+  section#planet-section .planets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding: 0px 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  header h1 {
+    font-size: 4em;
+  }
+
+  .highlight::after {
+    height: 20px;
+    bottom: calc(50% - 13px);
+  }
+
+  section#hero-section > div {
+    border-radius: 30px;
+  }
+
+  section#planet-section {
+    margin-bottom: 50px;
+    padding: 0px 0px;
+  }
+
+  section#planet-section .planets {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 32px;
+    padding: 0px 20px;
+  }
+}
